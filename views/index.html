@@ -1,0 +1,65 @@
+<!-- 
+ index.html - Ethereum Wallet
+ Author : Soto Jang (sotolabedu@gmail.com)
+ Copyright (c) Sunstar Since 2015. All Rights Reserved. See LICENSE file.
+ -->
+
+<!Doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="./js/web3.min.js"></script>
+<script type="text/javascript" src="./js/ethereumjs-tx-1.3.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js "></script>
+
+<!-- bootsrtap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<title>이동준 팬 가입에 찾아오셔서 감사합니다.</title>
+
+<script>
+$(document).ready(function(){
+  let DEBUG = 1;
+  const web3 = new Web3('https://ropsten.infura.io/v3/3c52917848e945229c0d33d632b10490');
+  let Buffer = ethereumjs.Buffer.Buffer;
+  let version = web3.version;
+
+  $('#newAccount').on('click', function(){
+    let account = web3.eth.accounts.create();
+    if (DEBUG) console.log("privateKey : ", account.privateKey);'	   
+    if (DEBUG) console.log("account : ", account.address);
+	  
+    $('#fromaddress').val(account.address);
+    $('#message').text(" account: " + account.address);
+    lert("Account 생성이 완료 되었습니다..!!!" + account.address);
+	//$('#i_password').val(privateKey);
+	//
+  })
+})
+</script>
+</head>
+
+<body>
+  <br>
+  <br>
+  <div class="container " role="main">
+    <h2><strong> 신한 110-421-840482 <br> 예금주 : 이동준 <br> Show me the money </strong></h2>
+  	<div id="tablePlace"></div>
+	<button id="newAccount">New Account</button>
+  </div>
+  <br>
+  <br>
+  <div class="container " role="main">
+	<h4><strong> Message </strong></h4>
+    <div id="message"></div>
+  </div>
+<hr>
+<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white"><b>copyright ⓒ Sunstar, Since 2015 . All Rights Reserved. </b></p>
+		</div>
+	</footer>
+</body>
+</html>
+
